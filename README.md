@@ -62,6 +62,14 @@ todo-app/
 - Ver solo tareas pendientes
 - Ver solo tareas completadas
 
-## Video de Demostración
+## Imagenes
 
-[Video]
+<img width="1179" height="2556" alt="image" src="https://github.com/user-attachments/assets/718ca73c-3c84-449c-8d05-096410893d33" />
+<img width="1179" height="2556" alt="image" src="https://github.com/user-attachments/assets/f9fb4cb9-dbfe-44fa-bd9e-9d3345abc70f" />
+<img width="1179" height="2556" alt="image" src="https://github.com/user-attachments/assets/d1422eb7-df4c-4442-b0be-a5cfa85790d4" />
+<img width="1179" height="2556" alt="image" src="https://github.com/user-attachments/assets/2a8441a2-dd0e-444f-a40b-98c9d9f08a1e" />
+<img width="1179" height="2556" alt="image" src="https://github.com/user-attachments/assets/b71e47fc-bcdb-4271-b768-c0be1713e0be" />
+
+
+
+
