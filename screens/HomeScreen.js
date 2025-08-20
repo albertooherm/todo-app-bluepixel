@@ -9,6 +9,7 @@ import {
 import TodoInput from '../components/TodoInput';
 import TodoList from '../components/TodoList';
 import TaskFilter from '../components/TaskFilter';
+import EditTaskModal from '../components/EditTaskModal';
 import {
   saveTasksToStorage,
   loadTasksFromStorage,
@@ -18,6 +19,8 @@ const HomeScreen = () => {
   const [tasks, setTasks] = useState([]);
   const [currentFilter, setCurrentFilter] = useState('all');
   const [isLoading, setIsLoading] = useState(true);
+  const [editingTask, setEditingTask] = useState(null);
+  const [isEditModalVisible, setIsEditModalVisible] = useState(false);
 
   // Carga las tareas desde el almacenamiento local al iniciar la app
   useEffect(() => {
@@ -55,6 +58,26 @@ const HomeScreen = () => {
 
   const handleDeleteTask = (taskId) => {
     setTasks(prevTasks => prevTasks.filter(task => task.id !== taskId));
+  };
+
+  const handleEditTask = (task) => {
+    setEditingTask(task);
+    setIsEditModalVisible(true);
+  };
+
+  const handleSaveEdit = (taskId, newTitle) => {
+    setTasks(prevTasks =>
+      prevTasks.map(task =>
+        task.id === taskId
+          ? { ...task, title: newTitle }
+          : task
+      )
+    );
+  };
+
+  const handleCloseEditModal = () => {
+    setIsEditModalVisible(false);
+    setEditingTask(null);
   };
 
   const handleFilterChange = (filterType) => {
@@ -109,6 +132,14 @@ const HomeScreen = () => {
         currentFilter={currentFilter}
         onToggleComplete={handleToggleComplete}
         onDeleteTask={handleDeleteTask}
+        onEditTask={handleEditTask}
+      />
+
+      <EditTaskModal
+        visible={isEditModalVisible}
+        task={editingTask}
+        onClose={handleCloseEditModal}
+        onSave={handleSaveEdit}
       />
     </SafeAreaView>
   );

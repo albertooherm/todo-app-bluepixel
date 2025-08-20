@@ -7,7 +7,7 @@ import {
   Alert,
 } from 'react-native';
 
-const TodoItem = ({ task, onToggleComplete, onDeleteTask }) => {
+const TodoItem = ({ task, onToggleComplete, onDeleteTask, onEditTask }) => {
   const handleDeletePress = () => {
     Alert.alert(
       'Eliminar Tarea',
@@ -24,6 +24,10 @@ const TodoItem = ({ task, onToggleComplete, onDeleteTask }) => {
         },
       ]
     );
+  };
+
+  const handleEditPress = () => {
+    onEditTask(task);
   };
 
   return (
@@ -48,6 +52,14 @@ const TodoItem = ({ task, onToggleComplete, onDeleteTask }) => {
       >
         {task.title}
       </Text>
+
+      <TouchableOpacity
+        style={styles.editButton}
+        onPress={handleEditPress}
+        activeOpacity={0.7}
+      >
+        <Text style={styles.editButtonText}>✎</Text>
+      </TouchableOpacity>
 
       <TouchableOpacity
         style={styles.deleteButton}
@@ -130,6 +142,29 @@ const styles = StyleSheet.create({
     color: '#6c757d',
     fontWeight: '400',
   },
+  editButton: {
+    width: 36,
+    height: 36,
+    borderRadius: 18,
+    backgroundColor: '#28a745',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginLeft: 8,
+    marginRight: 8,
+    shadowColor: '#28a745',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 4,
+  },
+  editButtonText: {
+    color: '#ffffff',
+    fontSize: 16,
+    fontWeight: 'bold',
+  },
   deleteButton: {
     width: 36,
     height: 36,
@@ -137,7 +172,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#dc3545',
     justifyContent: 'center',
     alignItems: 'center',
-    marginLeft: 12,
     shadowColor: '#dc3545',
     shadowOffset: {
       width: 0,

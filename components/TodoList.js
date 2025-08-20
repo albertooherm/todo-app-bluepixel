@@ -13,6 +13,7 @@ const TodoList = ({
   currentFilter,
   onToggleComplete,
   onDeleteTask,
+  onEditTask,
 }) => {
   // Filtra las tareas según el filtro actual
   const getFilteredTasks = () => {
@@ -31,6 +32,7 @@ const TodoList = ({
       task={item}
       onToggleComplete={onToggleComplete}
       onDeleteTask={onDeleteTask}
+      onEditTask={onEditTask}
     />
   );
 
